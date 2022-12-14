@@ -1,5 +1,5 @@
 from django.contrib import admin
-from rental.inventory.models import Product
+from rental.inventory.models import Product, ProductInventory, Brand, ProductType
 from django.template.defaultfilters import truncatechars
 
 
@@ -17,3 +17,28 @@ class ProductAdmin(admin.ModelAdmin):
 
     def short_description(self, obj):
         return obj.description[:50]
+
+
+@admin.register(ProductInventory)
+class ProductInventoryAdmin(admin.ModelAdmin):
+    list_display = ['id', 'upc', 'product', 'sku',
+                    'store_price', 'sale_price', 'weight']
+    search_fields = ['product', 'store_price', 'sale_price', ]
+    list_per_page = 10
+    list_filter = ['product', 'created_at']
+
+
+@admin.register(Brand)
+class BrandAdmin(admin.ModelAdmin):
+    list_display = ['id',  'name']
+    search_fields = ['name', ]
+    list_per_page = 10
+    list_filter = ['name']
+
+
+@admin.register(ProductType)
+class ProductTypeAdmin(admin.ModelAdmin):
+    list_display = ['id',  'name']
+    search_fields = ['name', ]
+    list_per_page = 10
+    list_filter = ['name']
