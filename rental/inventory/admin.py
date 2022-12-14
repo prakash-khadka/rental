@@ -1,5 +1,5 @@
 from django.contrib import admin
-from rental.inventory.models import Product, ProductInventory, Brand, ProductType
+from rental.inventory.models import Product, ProductInventory, Brand, ProductType, Media
 from django.template.defaultfilters import truncatechars
 
 
@@ -42,3 +42,11 @@ class ProductTypeAdmin(admin.ModelAdmin):
     search_fields = ['name', ]
     list_per_page = 10
     list_filter = ['name']
+
+
+@admin.register(Media)
+class MediaAdmin(admin.ModelAdmin):
+    list_display = ['id', 'alt_text', 'product_inventory', 'image', 'is_feature']
+    search_fields = ['alt_text', ]
+    list_per_page = 10
+    list_filter = ['alt_text']
