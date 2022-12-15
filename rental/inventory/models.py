@@ -107,40 +107,6 @@ class Product(models.Model):
         return self.name
 
 
-class ProductType(models.Model):
-    """
-    Product type table
-    """
-    name = models.CharField(
-        max_length=255,
-        null=False,
-        unique=True,
-        blank=False,
-        verbose_name=_("type of product"),
-        help_text=_("format: required,unique, max-255"),
-    )
-
-    def __str__(self):
-        return self.name
-
-
-class Brand(models.Model):
-    """
-    Product brand table
-    """
-    name = models.CharField(
-        max_length=255,
-        null=False,
-        unique=True,
-        blank=False,
-        verbose_name=_("brand name"),
-        help_text=_("format: required,unique, max-255"),
-    )
-
-    def __str__(self):
-        return self.name
-
-
 class ProductAttribute(models.Model):
     """
     Product attribute table
@@ -160,6 +126,45 @@ class ProductAttribute(models.Model):
         blank=False,
         verbose_name=_("product attribute description"),
         help_text=_("format: required"),
+    )
+
+    def __str__(self):
+        return self.name
+
+
+class ProductType(models.Model):
+    """
+    Product type table
+    """
+    name = models.CharField(
+        max_length=255,
+        null=False,
+        unique=True,
+        blank=False,
+        verbose_name=_("type of product"),
+        help_text=_("format: required,unique, max-255"),
+    )
+    # product_type_attributes = models.ManyToManyField(
+    #     ProductAttribute,
+    #     related_name="product_type_attributes",
+    #     through="ProductTypeAttribute",
+    # )
+
+    def __str__(self):
+        return self.name
+
+
+class Brand(models.Model):
+    """
+    Product brand table
+    """
+    name = models.CharField(
+        max_length=255,
+        null=False,
+        unique=True,
+        blank=False,
+        verbose_name=_("brand name"),
+        help_text=_("format: required,unique, max-255"),
     )
 
     def __str__(self):
@@ -394,3 +399,23 @@ class ProductAttributeValues(models.Model):
 
     class Meta:
         unique_together = (("attributevalues", "productinventory"),)
+
+
+class ProductTypeAttribute(models.Model):
+    """
+    Product type attributes link table
+    """
+
+    product_attribute = models.ForeignKey(
+        ProductAttribute,
+        related_name="productattribute",
+        on_delete=models.PROTECT,
+    )
+    product_type = models.ForeignKey(
+        ProductType,
+        related_name="producttype",
+        on_delete=models.PROTECT,
+    )
+
+    class Meta:
+        unique_together = (("product_attribute", "product_type"),)
