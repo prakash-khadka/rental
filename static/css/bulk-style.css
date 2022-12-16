@@ -14,52 +14,54 @@
     font-family: iconly;
     font-style: normal;
     font-weight: 200;
-    src: url("https://themes.pixelstrap.com/fastkart/assets/fonts/Iconly-light.eot");
-    src: url("https://themes.pixelstrap.com/fastkart/assets/fonts/Iconly-light.eot?#iefix") format("embedded-opentype"),
-        /* IE6-8 */
+   /**  src: url("{% fonts/Iconly-light.eot %} ");
+    src: <link href="{{ url_for('static', filename='styles2.min.css') }}" rel="stylesheet" type="text/css">;
+   src: url("{% fonts/Iconly-light.eot %}") format("embedded-opentype"),
+        /* IE6-8
         url("https://themes.pixelstrap.com/fastkart/assets/fonts/Iconly-light.woff") format("woff"),
-        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        /* FF3.6+, IE9, Chrome6+, Saf5.1
         url("https://themes.pixelstrap.com/fastkart/assets/fonts/Iconly-light.ttf") format("truetype"),
         url("../fonts/Iconly-light.svg#Iconly-light") format("svg");
+        **/
 }
 
 @font-face {
     font-family: iconly;
     font-style: normal;
     font-weight: normal;
-    src: url("https://themes.pixelstrap.com/fastkart/assets/fonts/Iconly-Broken.eot");
+   /*   src: url("https://themes.pixelstrap.com/fastkart/assets/fonts/Iconly-Broken.eot");
     src: url("https://themes.pixelstrap.com/fastkart/assets/fonts/Iconly-Broken.eot?#iefix") format("embedded-opentype"),
-        /* IE6-8 */
+       IE6-8
         url("https://themes.pixelstrap.com/fastkart/assets/fonts/Iconly-Broken.woff") format("woff"),
-        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        /* FF3.6+, IE9, Chrome6+, Saf5.1
         url("https://themes.pixelstrap.com/fastkart/assets/fonts/Iconly-Broken.ttf") format("truetype"),
-        url("../fonts/Iconly-Broken.html#Iconly-Broken") format("svg");
+        url("../fonts/Iconly-Broken.html#Iconly-Broken") format("svg");+*/
 }
 
 @font-face {
     font-family: iconly;
     font-style: normal;
     font-weight: 700;
-    src: url("https://themes.pixelstrap.com/fastkart/assets/fonts/Iconly-Bold.eot");
+   /*  src: url("https://themes.pixelstrap.com/fastkart/assets/fonts/Iconly-Bold.eot");
     src: url("https://themes.pixelstrap.com/fastkart/assets/fonts/Iconly-Bold.eot?#iefix") format("embedded-opentype"),
-        /* IE6-8 */
+        IE6-8
         url("https://themes.pixelstrap.com/fastkart/assets/fonts/Iconly-Bold.woff") format("woff"),
-        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        /* FF3.6+, IE9, Chrome6+, Saf5.1
         url("https://themes.pixelstrap.com/fastkart/assets/fonts/Iconly-Bold.ttf") format("truetype"),
-        url("../fonts/Iconly-Bold.svg#Iconly-Bold") format("svg");
+        url("../fonts/Iconly-Bold.svg#Iconly-Bold") format("svg");+*/
 }
 
 @font-face {
     font-family: iconly;
     font-style: normal;
     font-weight: 900;
-    src: url("https://themes.pixelstrap.com/fastkart/assets/fonts/Iconly-bulk.eot");
+    /* src: url("https://themes.pixelstrap.com/fastkart/assets/fonts/Iconly-bulk.eot");
     src: url("https://themes.pixelstrap.com/fastkart/assets/fonts/Iconly-bulk.eot?#iefix") format("embedded-opentype"),
-        /* IE6-8 */
+        IE6-8
         url("https://themes.pixelstrap.com/fastkart/assets/fonts/Iconly-bulk.woff") format("woff"),
-        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        /* FF3.6+, IE9, Chrome6+, Saf5.1
         url("https://themes.pixelstrap.com/fastkart/assets/fonts/Iconly-bulk.ttf") format("truetype"),
-        url("../fonts/Iconly-bulk.html#Iconly-bulk") format("svg");
+        url("../fonts/Iconly-bulk.html#Iconly-bulk") format("svg");+*/
 }
 
 [class^="iconly-"],
