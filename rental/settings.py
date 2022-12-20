@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rental.dashboard',
     'rental.inventory',
     'rental.demo',
+    'django_elasticsearch_dsl',
     # external applications
     'mptt',
 ]
@@ -93,7 +94,7 @@ DATABASES = {
         'USER': "postgres",
         'PASSWORD': "postgres",
         'HOST': "127.0.0.1",
-        'PORT': "5432",
+        'PORT': "5431",
     }
 }
 
@@ -143,3 +144,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'http://0.0.0.0:9200/'
+    },
+}
