@@ -15,11 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rental.demo import views
+# from rental.demo import views
+from rental.drf import views
+from rest_framework import routers
 
+router = routers.DefaultRouter()
+router.register(
+    r'api', views.AllProductsViewSet, basename="allproducts"
+)
+router.register(
+    r'product', views.ProductInventoryViewSet, basename="products"
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name="home"),
+    # path('', views.home, name="home"),
     path('demo/', include("rental.demo.urls", namespace="demo")),
+    path("", include(router.urls))
 ]

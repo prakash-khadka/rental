@@ -41,9 +41,11 @@ INSTALLED_APPS = [
     'rental.dashboard',
     'rental.inventory',
     'rental.demo',
+    'rental.drf',
     'django_elasticsearch_dsl',
     # external applications
     'mptt',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -148,4 +150,15 @@ ELASTICSEARCH_DSL = {
     'default': {
         'hosts': 'http://0.0.0.0:9200/'
     },
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
 }
