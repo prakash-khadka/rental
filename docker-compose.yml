@@ -30,3 +30,23 @@ services:
       - discovery.type=single-node
     ports:
       - 9200:9200
+    healthcheck:
+      test: 'exit 0'
+
+  web:
+    build: .
+    command: sh -c "python manage.py search_index --rebuild -f && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    container_name: drf
+    depends_on:
+#      pgdb:
+#        condition: service_healthy
+      esearch:
+        condition: service_healthy

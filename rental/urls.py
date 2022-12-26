@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-# from rental.demo import views
+from rental.demo.views import home
 from rental.drf import views
 from rest_framework import routers
 
@@ -29,7 +29,7 @@ router.register(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', views.home, name="home"),
+    path('', home, name="home"),
     path('demo/', include("rental.demo.urls", namespace="demo")),
-    path("", include(router.urls))
+    path("api", include(router.urls))
 ]
