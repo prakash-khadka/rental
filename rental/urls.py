@@ -31,5 +31,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name="home"),
     path('demo/', include("rental.demo.urls", namespace="demo")),
-    path("api", include(router.urls))
+    path("api/", include(router.urls))
 ]

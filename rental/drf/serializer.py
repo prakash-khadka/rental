@@ -11,9 +11,26 @@ class AllProducts(serializers.ModelSerializer):
         depth = 2
 
 
+class ProductSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Product
+        fields = ["name"]
+        read_only = True
+        editable = False
+
+
 class ProductInventorySerializer(serializers.ModelSerializer):
+
+    product = ProductSerializer(many=False, read_only=True)
+
     class Meta:
         model = ProductInventory
-        fields = "__all__"
+        fields = [
+            "id",
+            "sku",
+            "store_price",
+            "is_default",
+            "product",
+        ]
         read_only = True
-        depth = 2
