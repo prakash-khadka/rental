@@ -18,6 +18,7 @@ from django.urls import path, include
 from rental.demo.views import home
 from rental.drf import views
 from rest_framework import routers
+# from rental.drf.views import SearchProductInventory
 
 router = routers.DefaultRouter()
 router.register(
@@ -31,5 +32,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name="home"),
     path('demo/', include("rental.demo.urls", namespace="demo")),
-    path("api/", include(router.urls))
+    path("api/", include(router.urls)),
+    path("search/<str:query>/", views.SearchProductInventory.as_view()),
 ]
