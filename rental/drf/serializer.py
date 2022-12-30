@@ -22,7 +22,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class ProductInventorySerializer(serializers.ModelSerializer):
 
-    # product = ProductSerializer(many=False, read_only=True)
+    product = ProductSerializer(many=False, read_only=True)
 
     class Meta:
         model = ProductInventory
@@ -31,5 +31,6 @@ class ProductInventorySerializer(serializers.ModelSerializer):
             "sku",
             "store_price",
             "is_default",
+            "product",
         ]
         read_only = True
