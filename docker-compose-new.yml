@@ -1,0 +1,102 @@
+#version: '3.8'
+#
+#services:
+#  web:
+#    restart: always
+#    container_name: web_rental
+#    build:
+#      context: .
+#    command: python manage.py runserver 0.0.0.0:8000
+#    volumes:
+#      - ./usr/src/app/
+#    ports:
+#      8000:8000
+#    depends_on:
+#      - redis
+#      - pgdb
+#
+#  pgdb:
+#    container_name: pgdb_rental
+#    image: postgres
+#    restart: always
+#    ports:
+#      - 5431:5432
+#    environment:
+#      - POSTGRES_DB=postgres
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PASSWORD=postgres
+#
+#  elasticsearch:
+#    container_name: search
+#    image: elasticsearch:7.14.2
+#    environment:
+#      - discovery.type=single-node
+#      - xpack.security.enabled=false
+#    ports:
+#      - 9200:9200
+#    healthcheck:
+#      test: 'exit 0'
+#    volumes:
+#      - ./elasticsearch.yml:/user/share/elasticsearch/config/elasticsearch.yml
+#    depends_on:
+#      -pgdb
+#
+#  redis:
+#    container_name: redis_rental
+#    restart: always
+#    image: redis:alpine
+#    ports:
+#      - 6379:6379
+#
+#  celery:
+#    container_name: celery_rental
+#    restart: always
+#    build:
+#      context: .
+#    command: celery -A rental worker -l info
+#    environment:
+#      - DEBUG=1
+#      - CELERY_BROKER=redis://redis:6379/0
+#      - CELERY_BACKEND=redis://redis:6379:0
+#    depends_on:
+#      - redis
+#    volumes:
+#      - .:usr/src/app/
+#
+#  celery-beat:
+#    container_name: celery_beat_rental
+#    restart: always
+#    build:
+#      context: .
+#    command: celery -A rental beat -l info
+#    depends_on:
+#      - redis
+#      - celery
+#    volumes:
+#      - ./usr/src/app/
+#
+#  flower:
+#    container_name: flower_rental
+#    image: mhr.flower
+#    environment:
+#      -CELERY_BROKER_URL=redis://redis:6379/0
+#    ports:
+#      - 8888:8888
+
+#  web:
+#    build: .
+#    command: sh -c "python manage.py search_index --rebuild -f && python manage.py runserver 0.0.0.0:8000"
+#    volumes:
+#      - .:/code
+#    ports:
+#      - 8000:8000
+#    environment:
+#      - POSTGRES_NAME=postgres
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PASSWORD=postgres
+#    container_name: drf
+#    depends_on:
+##      pgdb:
+##        condition: service_healthy
+#      esearch:
+#        condition: service_healthy
