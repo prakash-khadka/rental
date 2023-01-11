@@ -96,8 +96,8 @@ DATABASES = {
         'NAME': "postgres",
         'USER': "postgres",
         'PASSWORD': "postgres",
-        'HOST': "127.0.0.1",  # change host to pgdb after docker file change
-        'PORT': "5431",
+        'HOST': "pgdb",  # change host to pgdb after docker file change
+        'PORT': "5432",
     }
 }
 
